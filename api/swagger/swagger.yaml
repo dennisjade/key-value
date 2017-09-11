@@ -1,0 +1,124 @@
+swagger: "2.0"
+info:
+  version: "0.0.1"
+  title: Key-Value pair app
+# during dev, should point to your local machine
+host: localhost:10010
+# basePath prefixes all resource paths 
+basePath: /
+# 
+schemes:
+  # tip: remove http to make production-grade
+  - http
+  - https
+# format of bodies a client can send (Content-Type)
+consumes:
+  - application/json
+# format of the responses to the client (Accepts)
+produces:
+  - application/json
+paths:
+  /object:
+    x-swagger-router-controller: keyvalue
+    post:
+      description: Saves the key and value pair with timestamp
+      operationId: saveObject
+      parameters:
+        - name: body
+          in: body
+          description: The key-value pair in JSON format
+          schema:
+            type: object
+            required:
+              - key
+              - value
+            properties:
+              key:
+                type: string
+              value:
+                type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/SuccessPostResponse"
+        "500":
+          description: Some error during the post
+          schema:
+            $ref: "#/definitions/FailedPostResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /object/{key}:
+    x-swagger-router-controller: keyvalue
+    get:
+      description: Retrieves the value of the key
+      operationId: getValue
+      parameters:
+        - name: key
+          in: path
+          description: The key to be retrieve
+          type: string
+          required: true
+        - name: timestamp
+          in: query
+          description: The timestamp when key-value pair was saved
+          type: number
+          required: false
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/SuccessGetValueResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /swagger:
+    x-swagger-pipe: swagger_raw
+
+# complex objects have schema definitions
+definitions:
+  ErrorResponse:
+    required:
+      - message
+      - data
+    properties:
+      message:
+        type: string
+      data:
+        type: string
+  FailedPostResponse:
+    type: object
+    required:
+      - message
+      - data
+    properties:
+      message:
+        type: string
+      data:
+        type: string
+  SuccessPostResponse:
+    type: object
+    required:
+      - key
+      - value
+      - timestamp
+    properties:
+      key:
+        type: string
+      value:
+        type: string
+      timestamp:
+        type: number
+  SuccessGetValueResponse:
+    type: object
+    required: 
+      - value
+    properties:
+      value:
+        type: string
+            
+
+

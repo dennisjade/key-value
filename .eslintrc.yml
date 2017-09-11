@@ -1,0 +1,31 @@
+extends: airbnb/legacy
+env:
+  mocha: true
+  node: true
+globals:
+  expect: true
+  assert: true
+  describe: true
+  sinon: true
+  beforeEach: true
+  afterEach: true
+  it: true
+  httpMocks: true
+  app: true
+  supertest: true
+  nock: true
+  urlServer: true
+  initProfile: true
+  initArOrg: true
+plugins:
+  - chai
+  - chai-expect
+rules:
+  comma-dangle: 0
+  func-names: 0
+  no-console: 0
+  no-param-reassign: 0
+  no-unused-vars: 1
+  no-unused-expressions: 0
+  chai-expect/missing-assertion: 2
+  chai-expect/terminating-properties: 1
