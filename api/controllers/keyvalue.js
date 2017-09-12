@@ -40,6 +40,8 @@ function saveObject(req, res) {
 
   KeyValueModel.save(body.key, body.value)
     .then(function (response) {
+      //remove non-expected field
+      delete response._id;
       res.json(response);
     })
     .catch(function(err){
