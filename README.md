@@ -35,7 +35,7 @@ $ swagger project edit
 |-------|-------|--------|-------------|
 |GET    | /object/key | NONE |Retrieves latest value stored based on the key|
 |GET   | /object/key | timestamp <number> |Retrieves latest value stored based on key and within timestamp|
-|POST | /object | key <string>;value<string> |Add key-value pair in DB|
+|POST | /object | key <string> ; value <string> |Add key-value pair in DB|
 
 ### Sample API calls
 ```sh
