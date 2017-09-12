@@ -7,6 +7,11 @@ module.exports = {
   saveObject: saveObject
 };
 
+/**
+ * @description Get the latest value of the key being pass and/or the timestamp
+ * @param req Request
+ * @param res Response
+ */
 function getValue(req, res) {
   var key = req.swagger.params.key.value || {};
   var timestamp = req.swagger.params.timestamp.value || null;
@@ -34,6 +39,11 @@ function getValue(req, res) {
     })
 }
 
+/**
+ * @description Saves the key-value pair with the timestamp
+ * @param req
+ * @param res
+ */
 function saveObject(req, res) {
   var body = req.swagger.params.body.value || {};
   var ret = {};
