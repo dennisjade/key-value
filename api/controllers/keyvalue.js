@@ -7,6 +7,16 @@ module.exports = {
   saveObject: saveObject
 };
 
+/**
+ * @api {get} /object/:key?timestamp=12 Request value information
+ * @apiName findKey
+ * @apiGroup KeyValue
+ *
+ * @apiParam {String} key Key of the document.
+ * @apiParam {Number} timestamp Timestamp of the document.
+ *
+ * @apiSuccess {Object} The value of the key and/or timestamp. i.e. {value:''}
+ */
 function getValue(req, res) {
   var key = req.swagger.params.key.value || {};
   var timestamp = req.swagger.params.timestamp.value || null;
@@ -34,6 +44,16 @@ function getValue(req, res) {
     })
 }
 
+/**
+ * @api {post} /object Save key-value pair
+ * @apiName saveObject
+ * @apiGroup KeyValue
+ *
+ * @apiParam {String} key Key of the document.
+ * @apiParam {String} value Value of the document.
+ *
+ * @apiSuccess {Object} The document being saved. i.e. {key:'',value:'',timestamp:12}
+ */
 function saveObject(req, res) {
   var body = req.swagger.params.body.value || {};
   var ret = {};
