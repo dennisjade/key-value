@@ -35,7 +35,7 @@ $ swagger project edit
 |-------|-------|--------|-------------|
 |GET    | /object/key | NONE |Retrieves latest value stored based on the key|
 |GET   | /object/key | timestamp <number> |Retrieves latest value stored based on key and within timestamp|
-|POST | /object | key <string> ; value <string> |Add key-value pair in DB|
+|POST | /object | key;value |Add key-value pair in DB. Pass inside the `body`|
 
 ### Sample API calls
 ```sh
@@ -43,5 +43,5 @@ $ curl -X 'GET' http://localhost:10010/object/1
 
 $ curl -X 'GET' http://localhost:10010/object/1?timestamp=1505231250937
 
-$ curl -H "Content-`
+$ curl -H "Content-Type: application/json" -X POST -d '{"key":"4","value":"Test 4"}' http://localhost:10010/object
 ````
