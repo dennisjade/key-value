@@ -1,1 +1,47 @@
-# Skeleton project for Swagger
+# Key-Value pair using swagger-express-middleware with MongoDB
+
+    This is an API application that stores a key-value pair and retrieves the latest value stored in the system
+
+### Installation
+Pre-requisites
+- [Node](https://nodejs.org) >= 8.4.0
+- [NPM](https://www.npmjs.com/)
+- [SWAGGER](https://www.npmjs.com/package/swagger) = 2.0
+#### Setup
+```sh
+$ git clone https://github.com/dennisjade/key-value.git
+$ cd key-value
+$ npm install
+$ npm start
+```
+### Test
+```sh
+$ npm test
+```
+### Viewing test coverage
+- In the root directory, run the command below
+- To view the HTML version report, go to **coverage/lcov-report/index.html**
+```sh
+$ ./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha  test/**/*
+```
+
+### Swagger UI (To test the APIs using browser)
+```sh
+$ swagger project edit
+```
+
+### Available APIs
+|Method | Route | Params | Description |
+|-------|-------|--------|-------------|
+|GET    | /object/key | NONE |Retrieves latest value stored based on the key|
+|GET   | /object/key | timestamp <number> |Retrieves latest value stored based on key and within timestamp|
+|POST | /object | key <string>;value<string> |Add key-value pair in DB|
+
+### Sample API calls
+```sh
+$ curl -X 'GET' http://localhost:10010/object/1
+
+$ curl -X 'GET' http://localhost:10010/object/1?timestamp=1505231250937
+
+$ curl -H "Content-`
+````
