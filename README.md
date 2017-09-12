@@ -3,18 +3,19 @@
     This is an API application that stores a key-value pair and retrieves the latest value stored in the system
 
 ### Installation
-Pre-requisites
+Pre-requisites (install with -g option)
 - [Node](https://nodejs.org) >= 8.4.0
 - [NPM](https://www.npmjs.com/)
 - [SWAGGER](https://www.npmjs.com/package/swagger) = 2.0
-#### Setup
+- [apiDoc][http://apidocjs.com/]
+#### Application setup
 ```sh
 $ git clone https://github.com/dennisjade/key-value.git
 $ cd key-value
 $ npm install
 $ npm start
 ```
-### Test
+### Running tests
 ```sh
 $ npm test
 ```
@@ -23,6 +24,11 @@ $ npm test
 - To view the HTML version report, go to **coverage/lcov-report/index.html**
 ```sh
 $ ./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha  test/**/*
+```
+
+### Creating the API doc
+```sh
+$ apidoc -i api -o doc/
 ```
 
 ### Swagger UI (To test the APIs using browser)
