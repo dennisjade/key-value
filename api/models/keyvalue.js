@@ -34,7 +34,7 @@ function save (body) {
     }
 
     data = {
-      key: formatted.key,
+      key: formatted.key.toLowerCase(),
       value: formatted.value,
       timestamp: new Date().getTime() // this is already in UTC
     };
@@ -59,8 +59,9 @@ function findKey (key, timestamp) {
   return new Promise(function (resolve, reject) {
     var data = null;
     var query = {
-      key: key
+      key: key.toLowerCase()
     };
+
 
     // add additional timestamp condition when looking for a value
     if (timestamp) {
