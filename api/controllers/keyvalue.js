@@ -49,8 +49,7 @@ function getValue(req, res) {
  * @apiName saveObject
  * @apiGroup KeyValue
  *
- * @apiParam {String} key Key of the document.
- * @apiParam {String} value Value of the document.
+ * @apiParam {String} body A JSON with format of {key:value}.
  *
  * @apiSuccess {Object} The document being saved. i.e. {key:'',value:'',timestamp:12}
  */
@@ -58,7 +57,7 @@ function saveObject(req, res) {
   var body = req.swagger.params.body.value || {};
   var ret = {};
 
-  KeyValueModel.save(body.key, body.value)
+  KeyValueModel.save(body)
     .then(function (response) {
       //remove non-expected field
       delete response._id;

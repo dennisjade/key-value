@@ -49,5 +49,5 @@ $ curl -X 'GET' http://localhost:10010/object/1
 
 $ curl -X 'GET' http://localhost:10010/object/1?timestamp=1505231250937
 
-$ curl -H "Content-Type: application/json" -X POST -d '{"key":"4","value":"Test 4"}' http://localhost:10010/object
+$ curl -H "Content-Type: application/json" -X POST -d '{"animal":"cat"}' http://localhost:10010/object
 ````

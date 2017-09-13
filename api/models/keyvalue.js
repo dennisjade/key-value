@@ -2,6 +2,7 @@
 
 var Promise = require('bluebird');
 var DB = require('../helpers/db');
+var util = require('../helpers/util');
 var Schema = DB.mongoose.Schema;
 
 // create a schema
@@ -19,18 +20,26 @@ module.exports = {
 
 /**
  * Tries to save the key value pair in the DB
- * @param key String
- * @param value String
+ * @param body Object
  * @returns Promise
  */
-function save (key, value) {
+function save (body) {
   return new Promise(function (resolve, reject){
-    var data = {
-      key: key,
-      value: value,
-      timestamp: new Date().getTime()
+    var data;
+    var formatted = util.formatKeyValue(body); // verify and parse the data sent
+
+    // reject if there is a error property
+    if (formatted.error){
+      return reject(formatted.error)
+    }
+
+    data = {
+      key: formatted.key,
+      value: formatted.value,
+      timestamp: new Date().getTime() // this is already in UTC
     };
 
+    // execute saving to DB
     KeyValue.collection.insert(data)
       .then(function () {
         return resolve(data);

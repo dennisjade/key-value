@@ -29,9 +29,6 @@ paths:
           description: The key-value pair in JSON format
           schema:
             type: object
-            required:
-              - key
-              - value
             properties:
               key:
                 type: string
